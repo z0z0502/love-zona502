@@ -373,6 +373,7 @@
             transform: rotate(45deg);
             transition: all 0.5s ease;
             z-index: 0;
+            display: none;
         }
         
         .btn:hover:before {
@@ -433,6 +434,45 @@
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
+            }
+        }
+        
+        /* الكريات الملونة المتفاعلة */
+        .floating-ball {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--ball-color1), var(--ball-color2));
+            box-shadow: 0 0 15px var(--ball-color1);
+            opacity: 0.8;
+            z-index: 1;
+            animation: floatBall 15s infinite linear;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .floating-ball:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 25px var(--ball-color1);
+            opacity: 1;
+        }
+        
+        @keyframes floatBall {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(calc(50vw - 50px), calc(-30vh + 50px)) rotate(90deg);
+            }
+            50% {
+                transform: translate(calc(100vw - 100px), calc(50vh - 100px)) rotate(180deg);
+            }
+            75% {
+                transform: translate(calc(30vw - 30px), calc(80vh - 150px)) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
             }
         }
         
@@ -690,6 +730,11 @@
                 top: 15px;
                 right: 20px;
             }
+            
+            .floating-ball {
+                width: 25px;
+                height: 25px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -789,6 +834,11 @@
             .lock-hearts {
                 font-size: 16px;
             }
+            
+            .floating-ball {
+                width: 20px;
+                height: 20px;
+            }
         }
         
         /* تحسينات خاصة للشاشات الكبيرة */
@@ -833,6 +883,10 @@
             .profile-img {
                 width: 120px;
                 height: 120px;
+            }
+            
+            .floating-ball {
+                display: none;
             }
         }
         
@@ -993,6 +1047,50 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
                 lockScreen.appendChild(heart);
+            }
+        }
+        
+        // إنشاء الكريات الملونة المتفاعلة
+        function createFloatingBalls() {
+            const ballColors = [
+                { color1: '#FF69B4', color2: '#FF1493' },
+                { color1: '#FFD700', color2: '#FFA500' },
+                { color1: '#9370DB', color2: '#8A2BE2' },
+                { color1: '#00BFFF', color2: '#1E90FF' },
+                { color1: '#7FFF00', color2: '#32CD32' },
+                { color1: '#FF6347', color2: '#FF4500' }
+            ];
+            
+            const ballCount = 8;
+            
+            for (let i = 0; i < ballCount; i++) {
+                const ball = document.createElement('div');
+                ball.classList.add('floating-ball');
+                
+                const colorIndex = i % ballColors.length;
+                const colors = ballColors[colorIndex];
+                
+                ball.style.setProperty('--ball-color1', colors.color1);
+                ball.style.setProperty('--ball-color2', colors.color2);
+                
+                ball.style.left = Math.random() * 80 + 10 + '%';
+                ball.style.top = Math.random() * 80 + 10 + '%';
+                ball.style.animationDelay = Math.random() * 5 + 's';
+                ball.style.animationDuration = (15 + Math.random() * 15) + 's';
+                
+                ball.addEventListener('click', function() {
+                    createFireworks({
+                        clientX: window.innerWidth * Math.random(),
+                        clientY: window.innerHeight * Math.random()
+                    });
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.remove();
+                        createFloatingBalls();
+                    }, 100);
+                });
+                
+                document.body.appendChild(ball);
             }
         }
         
@@ -1187,6 +1285,7 @@
             createGlitter();
             setTimeout(typeWriter, 1000);
             createFloatingText();
+            createFloatingBalls();
             
             // جعل القلوب قابلة للنقر
             document.querySelectorAll('.pulse-heart').forEach(heart => {
