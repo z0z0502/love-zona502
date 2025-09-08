@@ -14,90 +14,86 @@
             font-family: 'Scheherazade New', serif;
         }
         
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
-        
         body {
             background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 50%, #6A0DAD 100%);
             min-height: 100vh;
-            color: #FFF;
-            text-align: center;
-            touch-action: manipulation;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* تصميم المكونات الرئيسية */
-        .screen {
-            width: 100%;
-            height: 100vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-            position: relative;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            color: #FFF;
+            padding: 20px;
+            text-align: center;
         }
         
         /* صفحة القفل */
         #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #6A0DAD 0%, #8A2BE2 100%);
-            z-index: 1000;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
         }
         
         .lock-container {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 30px 20px;
+            padding: 40px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 极.2);
             width: 90%;
             max-width: 400px;
             text-align: center;
-            margin: auto;
         }
         
         .lock-icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: #FFD700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
         .lock-title {
             color: #FFD700;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         .lock-message {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
             color: rgba(255, 255, 255, 0.9);
         }
         
         .password-container {
             position: relative;
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .password-input {
             width: 100%;
-            padding: 12px 45px 12px 15px;
+            padding: 15px 45px 15px 15px;
             border: none;
             border-radius: 50px;
             background: rgba(255, 255, 255, 0.2);
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem;
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
@@ -126,12 +122,12 @@
         
         .unlock-btn {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: none;
             border-radius: 50px;
             background: linear-gradient(45deg, #FFD700, #FFA500);
             color: #6A0DAD;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -145,14 +141,14 @@
         
         .error-message {
             color: #FF6B6B;
-            margin-top: 12px;
-            font-size: 0.9rem;
+            margin-top: 15px;
+            font-size: 1rem;
             display: none;
         }
         
         .lock-hearts {
             position: absolute;
-            font-size: 18px;
+            font-size: 20px;
             color: #FF69B4;
             opacity: 0;
             animation: lockFloat 6s linear infinite;
@@ -178,27 +174,28 @@
         /* المحتوى الرئيسي */
         #main-content {
             display: none;
+            width: 100%;
         }
         
         .container {
-            width: 90%;
             max-width: 600px;
+            width: 100%;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            padding: 25px 20px;
+            padding: 30px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            margin: 20px auto;
+            margin: 0 auto;
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 20px;
             overflow: hidden;
             border: 5px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
@@ -220,8 +217,8 @@
         
         .glitter {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: #FFF;
             opacity: 0;
@@ -237,7 +234,7 @@
             10% {
                 opacity: 1;
             }
-            100% {
+            极00% {
                 transform: translateY(-100px) translateX(50px) rotate(360deg);
                 opacity: 0;
             }
@@ -245,22 +242,22 @@
         
         h1 {
             color: #FFD700;
-            margin-bottom: 15px;
-            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-size: 2.8rem;
             position: relative;
             z-index: 1;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         .name {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: #FFD700;
-            margin: 15px 0;
+            margin: 20px 0;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
             animation: glow 2s infinite alternate;
         }
         
-        @keyframes glow {
+        @极eyframes glow {
             from {
                 text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
             }
@@ -270,22 +267,27 @@
         }
         
         .message {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
             position: relative;
             z-index: 1;
         }
         
         .confession {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
-            margin: 20px 0;
-            line-height: 1.6;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin: 25px 0;
+            line-height: 1.8;
+            border: 2px solid rgba极255, 255, 255, 0.3);
             position: relative;
             transition: transform 0.3s ease;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .confession:hover {
@@ -295,37 +297,70 @@
         
         .confession:before {
             content: '"';
-            font-size: 4rem;
+            font-size: 5rem;
             color: rgba(255, 255, 255, 0.2);
             position: absolute;
-            top: 5px;
-            right: 15px;
+            top: 10px;
+            right: 20px;
+        }
+        
+        .confession-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* الكلمات المتطايرة داخل المستطيل */
+        .floating-word {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            opacity: 0;
+            z-index: 1;
+            animation: floatWord 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes floatWord {
+            0% {
+                transform: translateY(100%) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100%) translateX(0) rotate(360deg);
+                opacity: 0;
+            }
         }
         
         .footer {
-            margin-top: 25px;
-            font-size: 1rem;
+            margin-top: 30px;
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.8);
         }
         
         .special {
             color: #FFD700;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
             text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
         
         .hearts-container {
             display: flex;
             justify-content: center;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         
         .pulse-heart {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #FF69B4;
             animation: pulse 1.5s infinite;
-            margin: 0 8px;
+            margin: 0 10px;
             text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -336,27 +371,21 @@
             color: #FF1493;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 25px;
+            margin-top: 20px;
+            padding: 12px 30px;
             background: linear-gradient(45deg, #9B30FF, #6A0DAD);
             color: white;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5极 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
-            margin: 8px;
+            margin: 10px;
         }
         
         .btn:before {
@@ -388,8 +417,8 @@
         
         .fireworks {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
@@ -407,63 +436,36 @@
             }
         }
         
-        .floating-text {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            opacity: 0;
-            animation: floatText 15s linear infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        @keyframes floatText {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
         /* صفحة مدونة العشق */
         #love-blog {
             display: none;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 20px;
         }
         
         .blog-container {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 25px 20px;
+            padding: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .blog-title {
             color: #FFD700;
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         .blog-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
         }
@@ -475,10 +477,10 @@
         
         .blog-image {
             width: 100%;
-            height: 180px;
+            height: 200px;
             border-radius: 10px;
             object-fit: cover;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -489,30 +491,30 @@
         }
         
         .blog-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.2rem;
+            line-height: 1.8;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .blog-poem {
             font-style: italic;
             color: #FFD700;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin: 12px 0;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 15px 0;
             text-align: center;
         }
         
         .back-btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
+            margin-top: 20px;
+            padding: 12px 25px;
             background: linear-gradient(45deg, #FF69B4, #FF1493);
             color: white;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -533,32 +535,32 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            overflow: auto;
-            touch-action: manipulation;
+            overflow: hidden;
+            touch-action: none;
         }
         
         .modal-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100%;
-            padding: 20px;
-            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
         }
         
         .modal-image {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 10px;
+            transform-origin: center center;
+            transition: transform 0.3s ease;
         }
         
         .close {
-            position: fixed;
-            top: 15px;
-            right: 25px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
             color: #fff;
-            font-size: 35px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
             z-index: 2001;
@@ -566,13 +568,13 @@
         }
         
         .modal-controls {
-            position: fixed;
-            bottom: 20px;
+            position: absolute;
+            bottom: 30px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             z-index: 2001;
         }
         
@@ -581,9 +583,9 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -598,83 +600,162 @@
         }
         
         .zoom-info {
-            position: fixed;
-            bottom: 70px;
+            position: absolute;
+            bottom: 90px;
             left: 0;
             width: 100%;
             text-align: center;
             color: white;
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0.7;
         }
         
         /* تحسينات للتجاوب مع جميع الشاشات */
         @media (max-width: 768px) {
-            .screen {
-                padding: 15px;
-                justify-content: flex-start;
-            }
-            
             .container, .blog-container {
-                padding: 20px 15px;
-                margin: 15px auto;
+                padding: 25px 20px;
             }
             
             .lock-container {
-                padding: 25px 15px;
+                padding: 30px 20px;
+            }
+            
+            h1, .blog-title {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .name {
+                font-size: 2.8rem;
+                margin: 15px 0;
+            }
+            
+            .message, .blog-text {
+                font极: 1.2rem;
+                margin-bottom: 20px;
+            }
+            
+            .confession {
+                padding: 20px 15px;
+                margin: 20px 0;
+                min-height: 180px;
+            }
+            
+            .confession:before {
+                font-size: 4rem;
+                top: 5px;
+                right: 15px;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .pulse-heart {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .lock-title {
+                font-size: 1.8rem;
+            }
+            
+            .lock-message {
+                font-size: 1.1rem;
+            }
+            
+            .blog-item {
+                padding: 15px;
+            }
+            
+            .blog-poem {
+                font-size: 1.1rem;
+            }
+            
+            .modal-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .close {
+                font-size: 35px;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .floating-word {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container, .blog-container {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+            
+            .lock-container {
+                padding: 25极 15px;
+                border-radius: 15px;
             }
             
             h1, .blog-title {
                 font-size: 1.8rem;
-                margin-bottom: 12px;
             }
             
             .name {
-                font-size: 2rem;
-                margin: 12px 0;
+                font-size: 2.2rem;
             }
             
             .message, .blog-text {
                 font-size: 1.1rem;
-                margin-bottom: 15px;
             }
             
             .confession {
                 padding: 15px 12px;
-                margin: 15px 0;
+                font-size: 1rem;
+                min-height: 160px;
             }
             
             .confession:before {
                 font-size: 3rem;
-                top: 0;
-                right: 10px;
             }
             
             .profile-img {
                 width: 130px;
                 height: 130px;
-                margin-bottom: 12px;
             }
             
             .pulse-heart {
                 font-size: 1.8rem;
+                margin: 0 8px;
             }
             
             .btn {
                 padding: 8px 20px;
                 font-size: 1rem;
-                margin: 5px;
+            }
+            
+            .footer {
+                font-size: 1rem;
+            }
+            
+            .lock-icon {
+                font-size: 3rem;
             }
             
             .lock-title {
                 font-size: 1.5rem;
             }
             
-            .lock-message {
-                font-size: 1rem;
-            }
-            
-            .blog-item {
+            .password-input, .unlock-btn {
                 padding: 12px;
             }
             
@@ -695,192 +776,19 @@
             }
             
             .zoom-info {
-                bottom: 60px;
-                font-size: 12px;
-            }
-            
-            .blog-image {
-                height: 150px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .screen {
-                padding: 10px;
-            }
-            
-            .container, .blog-container {
-                padding: 15px 10px;
-                border-radius: 15px;
-                width: 95%;
-            }
-            
-            .lock-container {
-                padding: 20px 15px;
-                border-radius: 15px;
-            }
-            
-            h1, .blog-title {
-                font-size: 1.6rem;
-            }
-            
-            .name {
-                font-size: 1.8rem;
-            }
-            
-            .message, .blog-text {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-            
-            .confession {
-                padding: 12px 10px;
-                font-size: 0.95rem;
-            }
-            
-            .confession:before {
-                font-size: 2.5rem;
-            }
-            
-            .profile-img {
-                width: 110px;
-                height: 110px;
-            }
-            
-            .pulse-heart {
-                font-size: 1.6rem;
-                margin: 0 5px;
-            }
-            
-            .btn {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-                margin: 4px;
-            }
-            
-            .footer {
-                font-size: 0.9rem;
-            }
-            
-            .lock-icon {
-                font-size: 2.8rem;
-            }
-            
-            .lock-title {
-                font-size: 1.3rem;
-            }
-            
-            .password-input, .unlock-btn {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-            
-            .blog-poem {
-                font-size: 0.9rem;
-            }
-            
-            .modal-btn {
-                width: 35px;
-                height: 35px;
+                bottom: 80px;
                 font-size: 14px;
             }
             
-            .close {
-                font-size: 25px;
-                top: 10px;
-                right: 10px;
-            }
-            
-            .zoom-info {
-                bottom: 55px;
-                font-size: 11px;
-            }
-            
-            .blog-image {
-                height: 130px;
-            }
-            
-            .toggle-password {
-                right: 12px;
-            }
-        }
-        
-        /* تحسينات للوضع الأفقي على الهواتف */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .screen {
-                padding: 10px;
-                justify-content: flex-start;
-            }
-            
-            .lock-container {
-                padding: 15px;
-                margin: 10px auto;
-            }
-            
-            .container {
-                padding: 15px;
-                margin: 10px auto;
-            }
-            
-            .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .lock-icon {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
-            }
-            
-            .lock-title {
-                font-size: 1.3rem;
-                margin-bottom: 8px;
-            }
-            
-            .lock-message {
-                font-size: 0.9rem;
-                margin-bottom: 12px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .name {
-                font-size: 1.6rem;
-            }
-            
-            .message {
-                font-size: 0.9rem;
-                margin-bottom: 10px;
-            }
-            
-            .confession {
-                padding: 10px;
-                margin: 10px 0;
+            .floating-word {
                 font-size: 0.9rem;
             }
-        }
-        
-        /* منع تحديد النص على العناصر التفاعلية */
-        .btn, .pulse-heart, .unlock-btn, .modal-btn, .back-btn {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-        
-        /* تحسين الأداء على الهواتف */
-        .container, .lock-container, .blog-container {
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            perspective: 1000px;
         }
     </style>
 </head>
 <body>
     <!-- صفحة القفل -->
-    <div id="lock-screen" class="screen">
+    <div id="lock-screen">
         <div class="lock-container">
             <div class="lock-icon"><i class="fas fa-lock"></i></div>
             <h2 class="lock-title">صفحة خاصة</h2>
@@ -897,7 +805,7 @@
     </div>
 
     <!-- المحتوى الرئيسي -->
-    <div id="main-content" class="screen">
+    <div id="main-content">
         <div class="container">
             <!-- صورة نبأ بشكل دائري -->
             <div class="profile-img">
@@ -913,9 +821,12 @@
             </div>
             
             <div class="confession">
-                <p>أعترف لكِ أنني معجب بكِ منذ أول مرة رأيتكِ فيها</p>
-                <p>لم أستطع مقاومة سحر شخصيتكِ وروعة وجودكِ</p>
-                <p>أحببتُ طريقة تفكيركِ وضحكتكِ وكل شيء فيكِ</p>
+                <div class="confession-text">
+                    <p>أعترف لكِ أنني معجب بكِ منذ أول مرة رأيتكِ فيها</p>
+                    <p>لم أستطع مقاومة سحر شخصيتكِ وروعة وجودكِ</p>
+                    <p>أحببتُ طريقة تفكيركِ وضحكتكِ وكل شيء فيكِ</p>
+                </div>
+                <!-- الكلمات المتطايرة ستضاف هنا بالجافاسكريبت -->
             </div>
             
             <div class="hearts-container">
@@ -940,13 +851,13 @@
             </div>
             
             <div class="footer">
-                <p>من الشخص <span class="special">الأكثر</span> إعجاباً بكِ ❤️</p>
+                <极>من الشخص <span class="special">الأكثر</span> إعجاباً بكِ ❤️</p>
             </div>
         </div>
     </div>
 
     <!-- صفحة مدونة العشق -->
-    <div id="love-blog" class="screen">
+    <div id="love-blog">
         <div class="blog-container">
             <h2 class="blog-title">مدونة العشق</h2>
             
@@ -959,7 +870,7 @@
             </div>
             
             <div class="blog-item">
-                <img src="https://images.unsplash.com/photo-1519415711931-702deacf5be2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="صورة رومانسية" class="blog-image" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-151941571极931-702deacf5be2?ixlib=rb-1.2.1&auto=format&极it=crop&w=500&q=80" alt="صورة رومانسية" class="blog-image" onclick="openModal(this)">
                 <p class="blog-text">في عينيكِ وجدت نفسي، وفي صوتكِ وجدت سلامي، وفي وجودكِ وجدت حياتي.</p>
                 <div class="blog-poem">
                     "أنتِ القصيدة التي أعجز عن كتابتها، واللوحة التي أعجز عن رسمها، والحلم الذي لا أريد أن أستيقظ منه"
@@ -983,7 +894,7 @@
     <!-- معرض الصور -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
+        <div class极modal-content">
             <img class="modal-image" id="modalImg" src="">
         </div>
         <div class="modal-controls">
@@ -997,6 +908,8 @@
     <script>
         // متغيرات معرض الصور
         let currentScale = 1;
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
         
         // إنشاء القلوب العائمة لصفحة القفل
         function createLockHearts() {
@@ -1009,8 +922,25 @@
                 heart.innerHTML = '❤';
                 heart.style.left = Math.random() * 100 + '%';
                 heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
                 lockScreen.appendChild(heart);
+            }
+        }
+        
+        // إنشاء الكلمات المتطايرة داخل المستطيل
+        function createFloatingWords() {
+            const confession = document.querySelector('.confession');
+            const words = ["حب", "نبأ", "رومانسية", "غزل", "إعجاب", "هيام", "وله", "شغف", "عشق", "هوى", "فرح", "سعادة", "ابتسامة", "جمال", "أناقة"];
+            
+            for (let i = 0; i < 12; i++) {
+                const word = document.createElement('div');
+                word.classList.add('floating-word');
+                word.textContent = words[Math.floor(Math.random() * words.length)];
+                word.style.left = Math.random() * 80 + 10 + '%';
+                word.style.animationDelay = Math.random() * 10 + 's';
+                word.style.animationDuration = (15 + Math.random() * 15) + 's';
+                word.style.color = getRandomColor();
+                confession.appendChild(word);
             }
         }
         
@@ -1042,7 +972,7 @@
                 lockScreen.style.opacity = '0';
                 setTimeout(() => {
                     lockScreen.style.display = 'none';
-                    mainContent.style.display = 'flex';
+                    mainContent.style.display = 'block';
                     // بدء تأثيرات الصفحة الرئيسية
                     initMainPage();
                 }, 500);
@@ -1066,16 +996,14 @@
         
         // فتح مدونة العشق
         function openLoveBlog() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('love-blog').style.display = 'flex';
-            window.scrollTo(0, 0);
+            document.getElementById('main-content').极display = 'none';
+            document.getElementById('love-blog').style.display = 'block';
         }
         
         // العودة إلى الصفحة الرئيسية
         function goBack() {
             document.getElementById('love-blog').style.display = 'none';
-            document.getElementById('main-content').style.display = 'flex';
-            window.scrollTo(0, 0);
+            document.getElementById('main-content').style.display = 'block';
         }
         
         // فتح معرض الصور
@@ -1143,7 +1071,7 @@
         function initMainPage() {
             createGlitter();
             setTimeout(typeWriter, 1000);
-            createFloatingText();
+            createFloatingWords();
             
             // جعل القلوب قابلة للنقر
             document.querySelectorAll('.pulse-heart').forEach(heart => {
@@ -1154,7 +1082,7 @@
         // إنشاء اللمعان
         function createGlitter() {
             const container = document.querySelector('.container');
-            const glitterCount = 25;
+            const glitterCount = 30;
             
             for (let i = 0; i < glitterCount; i++) {
                 const glitter = document.createElement('div');
@@ -1162,7 +1090,7 @@
                 glitter.style.left = Math.random() * 100 + '%';
                 glitter.style.top = Math.random() * 100 + '%';
                 glitter.style.animationDelay = Math.random() * 5 + 's';
-                glitter.style.width = glitter.style.height = (Math.random() * 5 + 3) + 'px';
+                glitter.style.width = glitter.style.height = (Math.random() * 6 + 4) + 'px';
                 glitter.style.background = getRandomColor();
                 container.appendChild(glitter);
             }
@@ -1170,17 +1098,17 @@
         
         // إنشاء الألعاب النارية
         function createFireworks(e) {
-            const x = e.clientX || (e.touches ? e.touches[0].clientX : 0);
-            const y = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+            const x = e.clientX;
+            const y = e.clientY;
             
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 30; i++) {
                 const firework = document.createElement('div');
                 firework.classList.add('fireworks');
                 firework.style.left = x + 'px';
                 firework.style.top = y + 'px';
                 firework.style.background = getRandomColor();
-                firework.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
-                firework.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
+                firework.style.setProperty('--x', (Math.random() - 0.5) * 300 + 'px');
+                firework.style.setProperty('--y', (Math.random() - 0.5) * 300 + 'px');
                 firework.style.animation = `firework ${Math.random() * 1 + 0.5}s ease-out forwards`;
                 document.body.appendChild(firework);
                 
@@ -1188,27 +1116,6 @@
                     firework.remove();
                 }, 1000);
             }
-        }
-        
-        // إنشاء النصوص العائمة
-        function createFloatingText() {
-            const texts = ["حب", "نبأ", "رومانسية", "غزل", "إعجاب", "هيام", "وله", "شغف"];
-            
-            texts.forEach((text, index) => {
-                const floatingText = document.createElement('div');
-                floatingText.classList.add('floating-text');
-                floatingText.textContent = text;
-                floatingText.style.left = Math.random() * 100 + '%';
-                floatingText.style.animationDelay = index * 2 + 's';
-                floatingText.style.color = getRandomColor();
-                document.body.appendChild(floatingText);
-                
-                setTimeout(() => {
-                    floatingText.remove();
-                }, 15000);
-            });
-            
-            setTimeout(createFloatingText, 16000);
         }
         
         // الحصول على لون عشوائي
@@ -1246,7 +1153,7 @@
             const y = rect.top + rect.height / 2;
             
             const e = {
-                clientX: x,
+                client极: x,
                 clientY: y
             };
             createFireworks(e);
@@ -1260,21 +1167,6 @@
         // تهيئة الصفحة عند التحميل
         window.onload = function() {
             createLockHearts();
-            
-            // تحسين تجربة اللمس للهواتف
-            document.addEventListener('touchstart', function() {
-                // تحسين الاستجابة للّمس
-            }, { passive: true });
-            
-            document.addEventListener('touchmove', function(e) {
-                // منع التمرير الافتراضي على العناصر التفاعلية
-                if (e.target.classList.contains('pulse-heart') || 
-                    e.target.classList.contains('btn') ||
-                    e.target.classList.contains('unlock-btn') ||
-                    e.target.closest('.password-container')) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
         };
     </script>
 </body>
