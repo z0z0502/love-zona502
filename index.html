@@ -14,13 +14,17 @@
             font-family: 'Scheherazade New', serif;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 50%, #6A0DAD 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             color: #FFF;
             padding: 20px;
             text-align: center;
@@ -40,6 +44,8 @@
             flex-direction: column;
             z-index: 1000;
             transition: opacity 0.5s ease;
+            padding: 15px;
+            overflow: hidden;
         }
         
         .lock-container {
@@ -48,8 +54,8 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 极.2);
-            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
             max-width: 400px;
             text-align: center;
         }
@@ -59,12 +65,6 @@
             color: #FFD700;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
         
         .lock-title {
@@ -175,6 +175,8 @@
         #main-content {
             display: none;
             width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
         
         .container {
@@ -201,18 +203,22 @@
             box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
             position: relative;
             animation: float 6s ease-in-out infinite;
+            transition: transform 0.5s ease;
         }
         
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
         }
         
         .profile-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-img:hover img {
+            transform: scale(1.1);
         }
         
         .glitter {
@@ -234,7 +240,7 @@
             10% {
                 opacity: 1;
             }
-            极00% {
+            100% {
                 transform: translateY(-100px) translateX(50px) rotate(360deg);
                 opacity: 0;
             }
@@ -257,7 +263,7 @@
             animation: glow 2s infinite alternate;
         }
         
-        @极eyframes glow {
+        @keyframes glow {
             from {
                 text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
             }
@@ -280,14 +286,9 @@
             border-radius: 15px;
             margin: 25px 0;
             line-height: 1.8;
-            border: 2px solid rgba极255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
             transition: transform 0.3s ease;
-            overflow: hidden;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         .confession:hover {
@@ -302,39 +303,6 @@
             position: absolute;
             top: 10px;
             right: 20px;
-        }
-        
-        .confession-text {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* الكلمات المتطايرة داخل المستطيل */
-        .floating-word {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.2rem;
-            opacity: 0;
-            z-index: 1;
-            animation: floatWord 15s linear infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes floatWord {
-            0% {
-                transform: translateY(100%) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-100%) translateX(0) rotate(360deg);
-                opacity: 0;
-            }
         }
         
         .footer {
@@ -371,6 +339,12 @@
             color: #FF1493;
         }
         
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
         .btn {
             display: inline-block;
             margin-top: 20px;
@@ -382,7 +356,7 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5极 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
             margin: 10px;
@@ -436,6 +410,32 @@
             }
         }
         
+        .floating-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: floatText 15s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes floatText {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
         /* صفحة مدونة العشق */
         #love-blog {
             display: none;
@@ -443,6 +443,8 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            overflow-y: auto;
+            max-height: 100vh;
         }
         
         .blog-container {
@@ -631,14 +633,13 @@
             }
             
             .message, .blog-text {
-                font极: 1.2rem;
+                font-size: 1.2rem;
                 margin-bottom: 20px;
             }
             
             .confession {
                 padding: 20px 15px;
                 margin: 20px 0;
-                min-height: 180px;
             }
             
             .confession:before {
@@ -689,20 +690,20 @@
                 top: 15px;
                 right: 20px;
             }
-            
-            .floating-word {
-                font-size: 1rem;
-            }
         }
         
         @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
             .container, .blog-container {
                 padding: 20px 15px;
                 border-radius: 15px;
             }
             
             .lock-container {
-                padding: 25极 15px;
+                padding: 25px 15px;
                 border-radius: 15px;
             }
             
@@ -721,7 +722,6 @@
             .confession {
                 padding: 15px 12px;
                 font-size: 1rem;
-                min-height: 160px;
             }
             
             .confession:before {
@@ -741,6 +741,7 @@
             .btn {
                 padding: 8px 20px;
                 font-size: 1rem;
+                margin: 8px;
             }
             
             .footer {
@@ -780,13 +781,84 @@
                 font-size: 14px;
             }
             
-            .floating-word {
-                font-size: 0.9rem;
+            /* تحسينات للهواتف صغيرة الحجم */
+            .floating-text {
+                font-size: 1rem;
             }
+            
+            .lock-hearts {
+                font-size: 16px;
+            }
+        }
+        
+        /* تحسينات خاصة للشاشات الكبيرة */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 700px;
+            }
+            
+            .blog-container {
+                max-width: 900px;
+            }
+        }
+        
+        /* تحسينات للوضع الأفقي على الهواتف */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .lock-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+            
+            .lock-icon {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            
+            .lock-title {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+            
+            .lock-message {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        /* تحسينات الأداء للجوال */
+        @media (max-width: 768px) {
+            .glitter {
+                display: none;
+            }
+            
+            .floating-text {
+                animation-duration: 12s;
+            }
+        }
+        
+        /* منع اختيار النص على الهواتف */
+        .no-select {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
     </style>
 </head>
-<body>
+<body class="no-select">
     <!-- صفحة القفل -->
     <div id="lock-screen">
         <div class="lock-container">
@@ -821,12 +893,9 @@
             </div>
             
             <div class="confession">
-                <div class="confession-text">
-                    <p>أعترف لكِ أنني معجب بكِ منذ أول مرة رأيتكِ فيها</p>
-                    <p>لم أستطع مقاومة سحر شخصيتكِ وروعة وجودكِ</p>
-                    <p>أحببتُ طريقة تفكيركِ وضحكتكِ وكل شيء فيكِ</p>
-                </div>
-                <!-- الكلمات المتطايرة ستضاف هنا بالجافاسكريبت -->
+                <p>أعترف لكِ أنني معجب بكِ منذ أول مرة رأيتكِ فيها</p>
+                <p>لم أستطع مقاومة سحر شخصيتكِ وروعة وجودكِ</p>
+                <p>أحببتُ طريقة تفكيركِ وضحكتكِ وكل شيء فيكِ</p>
             </div>
             
             <div class="hearts-container">
@@ -851,7 +920,7 @@
             </div>
             
             <div class="footer">
-                <极>من الشخص <span class="special">الأكثر</span> إعجاباً بكِ ❤️</p>
+                <p>من الشخص <span class="special">الأكثر</span> إعجاباً بكِ ❤️</p>
             </div>
         </div>
     </div>
@@ -870,7 +939,7 @@
             </div>
             
             <div class="blog-item">
-                <img src="https://images.unsplash.com/photo-151941571极931-702deacf5be2?ixlib=rb-1.2.1&auto=format&极it=crop&w=500&q=80" alt="صورة رومانسية" class="blog-image" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1519415711931-702deacf5be2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="صورة رومانسية" class="blog-image" onclick="openModal(this)">
                 <p class="blog-text">في عينيكِ وجدت نفسي، وفي صوتكِ وجدت سلامي، وفي وجودكِ وجدت حياتي.</p>
                 <div class="blog-poem">
                     "أنتِ القصيدة التي أعجز عن كتابتها، واللوحة التي أعجز عن رسمها، والحلم الذي لا أريد أن أستيقظ منه"
@@ -894,7 +963,7 @@
     <!-- معرض الصور -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div class极modal-content">
+        <div class="modal-content">
             <img class="modal-image" id="modalImg" src="">
         </div>
         <div class="modal-controls">
@@ -924,23 +993,6 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
                 lockScreen.appendChild(heart);
-            }
-        }
-        
-        // إنشاء الكلمات المتطايرة داخل المستطيل
-        function createFloatingWords() {
-            const confession = document.querySelector('.confession');
-            const words = ["حب", "نبأ", "رومانسية", "غزل", "إعجاب", "هيام", "وله", "شغف", "عشق", "هوى", "فرح", "سعادة", "ابتسامة", "جمال", "أناقة"];
-            
-            for (let i = 0; i < 12; i++) {
-                const word = document.createElement('div');
-                word.classList.add('floating-word');
-                word.textContent = words[Math.floor(Math.random() * words.length)];
-                word.style.left = Math.random() * 80 + 10 + '%';
-                word.style.animationDelay = Math.random() * 10 + 's';
-                word.style.animationDuration = (15 + Math.random() * 15) + 's';
-                word.style.color = getRandomColor();
-                confession.appendChild(word);
             }
         }
         
@@ -996,14 +1048,16 @@
         
         // فتح مدونة العشق
         function openLoveBlog() {
-            document.getElementById('main-content').极display = 'none';
+            document.getElementById('main-content').style.display = 'none';
             document.getElementById('love-blog').style.display = 'block';
+            window.scrollTo(0, 0);
         }
         
         // العودة إلى الصفحة الرئيسية
         function goBack() {
             document.getElementById('love-blog').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
         }
         
         // فتح معرض الصور
@@ -1067,11 +1121,72 @@
             }
         }
         
+        // إضافة دعم السحب للصورة
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalImg = document.getElementById('modalImg');
+            const modalContent = document.querySelector('.modal-content');
+            
+            modalContent.addEventListener('mousedown', function(e) {
+                if (currentScale > 1) {
+                    isDragging = true;
+                    startX = e.pageX - modalContent.offsetLeft;
+                    startY = e.pageY - modalContent.offsetTop;
+                    scrollLeft = modalContent.scrollLeft;
+                    scrollTop = modalContent.scrollTop;
+                }
+            });
+            
+            modalContent.addEventListener('mouseleave', function() {
+                isDragging = false;
+            });
+            
+            modalContent.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            modalContent.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - modalContent.offsetLeft;
+                const y = e.pageY - modalContent.offsetTop;
+                const walkX = (x - startX) * 2;
+                const walkY = (y - startY) * 2;
+                modalContent.scrollLeft = scrollLeft - walkX;
+                modalContent.scrollTop = scrollTop - walkY;
+            });
+            
+            // دعم اللمس للهواتف
+            modalContent.addEventListener('touchstart', function(e) {
+                if (currentScale > 1) {
+                    isDragging = true;
+                    startX = e.touches[0].pageX - modalContent.offsetLeft;
+                    startY = e.touches[0].pageY - modalContent.offsetTop;
+                    scrollLeft = modalContent.scrollLeft;
+                    scrollTop = modalContent.scrollTop;
+                }
+            });
+            
+            modalContent.addEventListener('touchend', function() {
+                isDragging = false;
+            });
+            
+            modalContent.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - modalContent.offsetLeft;
+                const y = e.touches[0].pageY - modalContent.offsetTop;
+                const walkX = (x - startX) * 2;
+                const walkY = (y - startY) * 2;
+                modalContent.scrollLeft = scrollLeft - walkX;
+                modalContent.scrollTop = scrollTop - walkY;
+            });
+        });
+        
         // تهيئة تأثيرات الصفحة الرئيسية
         function initMainPage() {
             createGlitter();
             setTimeout(typeWriter, 1000);
-            createFloatingWords();
+            createFloatingText();
             
             // جعل القلوب قابلة للنقر
             document.querySelectorAll('.pulse-heart').forEach(heart => {
@@ -1118,6 +1233,27 @@
             }
         }
         
+        // إنشاء النصوص العائمة
+        function createFloatingText() {
+            const texts = ["حب", "نبأ", "رومانسية", "غزل", "إعجاب", "هيام", "وله", "شغف", "نبأ", "عشق", "نبأ", "هوى"];
+            
+            texts.forEach((text, index) => {
+                const floatingText = document.createElement('div');
+                floatingText.classList.add('floating-text');
+                floatingText.textContent = text;
+                floatingText.style.left = Math.random() * 100 + '%';
+                floatingText.style.animationDelay = index * 2 + 's';
+                floatingText.style.color = getRandomColor();
+                document.body.appendChild(floatingText);
+                
+                setTimeout(() => {
+                    floatingText.remove();
+                }, 15000);
+            });
+            
+            setTimeout(createFloatingText, 16000);
+        }
+        
         // الحصول على لون عشوائي
         function getRandomColor() {
             const colors = [
@@ -1153,7 +1289,7 @@
             const y = rect.top + rect.height / 2;
             
             const e = {
-                client极: x,
+                clientX: x,
                 clientY: y
             };
             createFireworks(e);
@@ -1167,6 +1303,11 @@
         // تهيئة الصفحة عند التحميل
         window.onload = function() {
             createLockHearts();
+            
+            // تحسين تجربة اللمس للهواتف
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
         };
     </script>
 </body>
